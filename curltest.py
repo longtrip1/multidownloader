@@ -1,8 +1,11 @@
 import os
 import subprocess
+import requests
 wd = (os.getcwd())
 link = (input('输入链接'))
-#downloadthread = input('输入下载线程')
+r=requests.head(link)
+#文件大小
+filesize=r.headers['Content-Length']
 downloadbat = wd+'/download.bat'
 file = open(downloadbat,'w')
 file.write('curl -O ')
